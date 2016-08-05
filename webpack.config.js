@@ -24,7 +24,7 @@ if(environment === 'client') {
           loader: 'babel-loader'
         },
         { test: /\.jsx?$/, loaders: ['jsx-loader?harmony']},
-        { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, // use ! to chain loaders
+        //{ test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, // use ! to chain loaders
         // { test: /\.css$/, loader: 'style-loader!css-loader' },
         { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader","css-loader")},
         { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader","css-loader!less-loader")},
@@ -33,7 +33,7 @@ if(environment === 'client') {
     },
     plugins: [ 
       // new webpack.optimize.CommonsChunkPlugin('commond.js'), 
-      new ExtractTextPlugin("public/css/poem_build.css"), 
+      new ExtractTextPlugin("public/css/poem.css"), 
     ]
   };
 }

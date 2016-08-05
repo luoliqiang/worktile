@@ -7,9 +7,9 @@ var ReactDOMServer = require('react-dom/server');
 router.get('/', function(req, res, next) {
     query.taskList(function(data) {
         var page = require('../release/page_server')(data);
-        var htmls_main= ReactDOMServer.renderToString(React.createFactory(page)());
-        var pate_left = require('../release/page_server')(data);
-        res.render('layout', {component: htmls_main, userInfo: JSON.stringify(data)});
+        var htmls_page= ReactDOMServer.renderToString(React.createFactory(page)());
+        console.log(htmls_page);
+        res.render('layout', {component: htmls_page, userInfo: JSON.stringify(data)});
     });
 });
 router.get('/taskList', function(req, res, next) {

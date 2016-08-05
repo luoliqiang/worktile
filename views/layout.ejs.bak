@@ -7,7 +7,7 @@
     <meta name="Description" content="poem-FM" />
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/poem_build.css">
+    <!-- <link rel="stylesheet" href="/css/poem.css"> -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/react/docs/js/react.js"></script>
@@ -21,9 +21,16 @@
         window.initData = '<%- userInfo %>';
     </script>
     <div id="appContainer">
-      <div>
-        <%-component%>
-      </div>
+        <div id="topbar">
+            <% include topbar %>
+        </div>
+        <div id="centerContent">
+            <div id="js-task-wrapper"><%-component%></div>
+            <!-- 模版输出前不能有空格，否则会报错 -->
+        </div>
+        <div id="sidebar" class="side-wrapper">
+            <% include sidebar %>
+        </div>
     </div>
   </body>
   <script src="js/bundle.js"></script>
