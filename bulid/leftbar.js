@@ -5,16 +5,43 @@ if(typeof window !== 'undefined') {
     require("../public/less/p_sidebar.less");
 }
 
-var TopBar = React.createClass({
+var FastAddList = React.createClass({
     render: function() {
+        return (
+            <div className={this.props.showStatus == true? "fastadd-list-box": "fastadd-list-box hide"}>
+                <ul>
+                    <li><i className="fa fa-group"></i>团队</li>
+                    <li><i className="fa fa-inbox"></i>项目</li>
+                    <li className="line"><i className="fa fa-tasks"></i>任务</li>
+                    <li><i className="fa fa-calendar-o"></i>日程</li>
+                    <li><i className="fa fa-file"></i>文件</li>
+                </ul>
+            </div>
+        );
+    }
+});
+
+var LeftBar = React.createClass({
+    getInitialState: function() {
+        return {showStatus: false };
+    },
+    fastAdd: function() {
+        var that = this;
+        this.setState({showStatus: ! that.state.showStatus});
+    },
+    componentDidMount: function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+    render: function() {
+        var that = this;
         return (
             <div id="sidebar" className="side-wrapper">
                 <div className="lf-bar-avatar">
                     <img src="/images/avatar.jpg" />
                 </div>
                 <div className="lf-bar-nav-wrap">
-                    <a className="lf-bar-nav-item cur" data-toggle="tooltip" title="工作台" data-placement="right">
-                        <i className="icon-tasks fa fa-tasks"></i>
+                    <a className="lf-bar-nav-item cur" data-toggle="tooltip" title="工作台" data-placement="right" style={{whiteSpace: 'nowrap'}}>
+                        <i className="icon-tasks fa fa-dashboard"></i>
                     </a>
                     <a className="lf-bar-nav-item" data-toggle="tooltip" title="搜索" data-placement="right">
                         <i className="icon-tasks fa fa-search"></i>
@@ -28,8 +55,9 @@ var TopBar = React.createClass({
                     <a className="lf-bar-nav-item" data-toggle="tooltip" title="项目" data-placement="right">
                         <i className="icon-tasks fa fa-cubes"></i>
                     </a>
-                    <a className="lf-bar-nav-item lf-bar-nav-item-add" data-toggle="tooltip" title="快速新建" data-placement="right">
-                        <i className="icon-tasks fa fa-plus-circle"></i>
+                    <a className="lf-bar-nav-item lf-bar-nav-item-add">
+                        <i className="icon-tasks fa fa-plus-circle" onClick={this.fastAdd} data-toggle="tooltip" title="快速新建" data-placement="right"></i>
+                        <FastAddList showStatus={that.state.showStatus}/>
                     </a>
                 </div>
             </div>
@@ -37,4 +65,4 @@ var TopBar = React.createClass({
     }
 });
 
-module.exports = TopBar;
+module.exports = LeftBar;

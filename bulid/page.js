@@ -4,6 +4,11 @@ var ReactDOM = require('react-dom');
 var Leftbar = require('./leftbar');
 var Topbar = require('./topbar'); 
 var Main = require('./main'); 
+var FastAddDialog = require('./fastAddDialog'); 
+
+if(typeof window !== 'undefined') {
+    require("../public/less/p_main.less");
+}
 
 var componont_layout = function(data) {
     var Pagelayout = React.createClass({
@@ -14,6 +19,7 @@ var componont_layout = function(data) {
                     <Topbar />
                     <Main data={initData} />
                     <Leftbar />
+                    <FastAddDialog />
                 </div>
             );
         }
@@ -23,11 +29,8 @@ var componont_layout = function(data) {
 }
 
 if(typeof window !== 'undefined') {
-
     var initData = JSON.parse(window.initData);
     var Pagelayout = componont_layout();
-
-    require("../public/less/poem.less");
 
     ReactDOM.render(
         <Pagelayout data={initData}/>,

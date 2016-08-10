@@ -10,7 +10,7 @@ var TopBar = React.createClass({
         return (
             <div id="topbar">
                 <div className="tk-console">
-                    <i className="icon-tasks fa fa-tasks"></i>
+                    <i className="icon-tasks fa fa-dashboard"></i>
                     <h3 className="top-tk-title">工作台</h3>
                     <div className="top-tk-tabs">
                         <div className="tab cur">我的任务</div>
