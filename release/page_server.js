@@ -49,9 +49,9 @@ module.exports =
 	var React = __webpack_require__(34);
 	var ReactDOM = __webpack_require__(70);
 	var Leftbar = __webpack_require__(200);
-	var Topbar = __webpack_require__(206);
-	var Main = __webpack_require__(209);
-	var FastAddDialog = __webpack_require__(205);
+	var Topbar = __webpack_require__(205);
+	var Main = __webpack_require__(208);
+	var FastAddDialog = __webpack_require__(212);
 
 	if (typeof window !== 'undefined') {
 	    __webpack_require__(213);
@@ -20222,8 +20222,11 @@ module.exports =
 	}
 
 	var FastAddList = React.createClass({ displayName: "FastAddList",
+	    showAddtaskDialog: function () {
+	        PubSub.publish('show.addTaskDialog');
+	    },
 	    render: function () {
-	        return React.createElement("div", { className: this.props.showStatus == true ? "fastadd-list-box" : "fastadd-list-box hide" }, React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-group" }), "团队"), React.createElement("li", null, React.createElement("i", { className: "fa fa-inbox" }), "项目"), React.createElement("li", { className: "line" }, React.createElement("i", { className: "fa fa-tasks" }), "任务"), React.createElement("li", null, React.createElement("i", { className: "fa fa-calendar-o" }), "日程"), React.createElement("li", null, React.createElement("i", { className: "fa fa-file" }), "文件")));
+	        return React.createElement("div", { className: this.props.showStatus == true ? "fastadd-list-box" : "fastadd-list-box hide" }, React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-group" }), "团队"), React.createElement("li", null, React.createElement("i", { className: "fa fa-inbox" }), "项目"), React.createElement("li", { onClick: this.showAddtaskDialog, className: "line" }, React.createElement("i", { className: "fa fa-tasks" }), "任务"), React.createElement("li", null, React.createElement("i", { className: "fa fa-calendar-o" }), "日程"), React.createElement("li", null, React.createElement("i", { className: "fa fa-file" }), "文件")));
 	    }
 	});
 
@@ -20598,26 +20601,8 @@ module.exports =
 	var React = __webpack_require__(34);
 	var ReactDOM = __webpack_require__(70);
 
-	var DialogBox = React.createClass({ displayName: "DialogBox",
-	    getInitialState: function () {
-	        return { showStatus: false };
-	    },
-	    render: function () {
-	        return React.createElement("div", null);
-	    }
-	});
-
-	module.exports = DialogBox;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(34);
-	var ReactDOM = __webpack_require__(70);
-
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(207);
+	    __webpack_require__(206);
 	}
 
 	var TopBar = React.createClass({ displayName: "TopBar",
@@ -20629,13 +20614,13 @@ module.exports =
 	module.exports = TopBar;
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(208);
+	var content = __webpack_require__(207);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(204)(content, {});
@@ -20655,7 +20640,7 @@ module.exports =
 	}
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(203)();
@@ -20669,7 +20654,7 @@ module.exports =
 
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM */
@@ -20677,7 +20662,7 @@ module.exports =
 	var ReactDOM = __webpack_require__(70);
 
 	if (typeof window !== 'undefined') {
-	    var Tasks = __webpack_require__(210);
+	    var Tasks = __webpack_require__(209);
 	}
 
 	var Mainlayout = React.createClass({ displayName: "Mainlayout",
@@ -20690,7 +20675,7 @@ module.exports =
 	module.exports = Mainlayout;
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM */
@@ -20698,7 +20683,7 @@ module.exports =
 	var ReactDOM = __webpack_require__(70);
 
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(211);
+	    __webpack_require__(210);
 	}
 
 	var TaskList = React.createClass({ displayName: "TaskList",
@@ -20816,13 +20801,13 @@ module.exports =
 	module.exports = TaskWrapper;
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(212);
+	var content = __webpack_require__(211);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(204)(content, {});
@@ -20842,7 +20827,7 @@ module.exports =
 	}
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(203)();
@@ -20854,6 +20839,109 @@ module.exports =
 
 	// exports
 
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(34);
+	var ReactDOM = __webpack_require__(70);
+
+	var Textarea = React.createClass({ displayName: "Textarea",
+	    handleChange: function (event) {
+	        this.props.getParams('taskName', event.target.value);
+	    },
+	    render: function () {
+	        return React.createElement("div", null, React.createElement("textarea", { placeholder: "请输入任务内容（按Enter 键直接保存并关闭）", onChange: this.handleChange }), React.createElement("p", { className: "textarea-tip" }, "粘贴多行文本可快速创建多条任务。（按 Shift + Enter 可手动换行）"));
+	    }
+	});
+
+	var Selecttype = React.createClass({ displayName: "Selecttype",
+	    getInitialState: function () {
+	        return {
+	            projectname: '个人项目',
+	            tasktype: 0,
+	            projectid: 1
+	        };
+	    },
+	    changeProject: function (event) {
+	        var project_id = event.target.getAttribute('data-projectid');
+	        var new_state = {
+	            projectname: event.target.innerText,
+	            projectid: project_id
+	        };
+	        this.refs.dropdown.className = 'dropdown';
+	        this.setState(new_state);
+	        this.props.getParams('projectId', project_id);
+	    },
+	    changeType: function () {
+	        var type = this.target.getAttribute('data-tasktype');
+	        this.setState({ tasktype: type });
+	    },
+	    render: function () {
+	        var tasktypename = {
+	            0: '要做',
+	            1: '在做',
+	            2: '待定'
+	        };
+	        var tasktypenametxt = tasktypename[this.state.tasktype];
+	        return React.createElement("div", { className: "item-wrap fix" }, React.createElement("div", { className: "item" }, "所属项目：", React.createElement("div", { className: "dropdown", ref: "dropdown" }, React.createElement("button", { className: "btn btn-default dropdown-toggle", type: "button", "data-projectid": this.state.projectid }, this.state.projectname, React.createElement("span", { className: "caret" })), React.createElement("ul", { className: "dropdown-menu" }, React.createElement("li", null, React.createElement("a", { href: "#", "data-projectid": "1", onClick: this.changeProject }, "个人项目")), React.createElement("li", null, React.createElement("a", { href: "#", "data-projectid": "2", onClick: this.changeProject }, "poem项目"))))), React.createElement("div", { className: "item" }, "任务列表：", React.createElement("div", { className: "dropdown" }, React.createElement("button", { className: "btn btn-default dropdown-toggle", type: "button", "data-tasktype": "1" }, tasktypenametxt, React.createElement("span", { className: "caret" })), React.createElement("ul", { className: "dropdown-menu" }, React.createElement("li", null, React.createElement("a", { href: "#", "data-tasktype": "0", onClick: this.changeType }, "要做")), React.createElement("li", null, React.createElement("a", { href: "#", "data-tasktype": "1", onClick: this.changeType }, "在做")), React.createElement("li", null, React.createElement("a", { href: "#", "data-tasktype": "2", onClick: this.changeType }, "待定"))))));
+	    }
+	});
+
+	var Signtype = React.createClass({ displayName: "Signtype",
+	    getInitialState: function () {
+	        return {
+	            lockStatus: 0
+	        };
+	    },
+	    changeLock: function (event) {
+	        var new_lock_status = Number(!this.state.lockStatus);
+	        this.setState({ lockStatus: new_lock_status });
+	        this.props.getParams('taskLock', new_lock_status);
+	    },
+	    render: function () {
+	        var icon_class = this.state.lockStatus ? 'fa fa-fw fa-lock' : 'fa fa-fw fa-unlock';
+	        return React.createElement("div", { className: "item-wrap fix" }, React.createElement("div", { className: "item" }, "分配给：", React.createElement("div", { className: "sign-add" }, React.createElement("span", null, "＋"))), React.createElement("div", { className: "item" }, React.createElement("span", { "data-tasklock": "0", onClick: this.changeLock }, React.createElement("i", { className: icon_class }), "锁定任务")));
+	    }
+	});
+
+	var DialogBox = React.createClass({ displayName: "DialogBox",
+	    getInitialState: function () {
+	        return {
+	            showStatus: false
+	        };
+	    },
+	    componentDidMount: function () {
+	        var that = this;
+	        this.params = {};
+	        PubSub.subscribe('show.addTaskDialog', function () {
+	            var showStatus = that.state.showStatus;
+	            that.setState({ showStatus: !showStatus });
+	        });
+	        $('.modal-addTask .dropdown-toggle').dropdown();
+	    },
+	    componentWillUnmount: function () {
+	        var that = this;
+	        this.params = {};
+	        PubSub.unsubscribe('show.addTaskDialog');
+	    },
+	    closeDialog: function () {
+	        this.setState({ showStatus: false });
+	    },
+	    getParams: function (key, val) {
+	        this.params[key] = val;
+	        console.log(this.params);
+	    },
+	    doSaveadd: function () {
+	        var params = this.params;
+	    },
+	    render: function () {
+	        return React.createElement("div", { className: this.state.showStatus ? "modal modal-addTask show" : "modal modal-addTask fade hide" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { onClick: this.closeDialog, type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "×")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "新建任务")), React.createElement("div", { className: "modal-body" }, React.createElement(Textarea, { getParams: this.getParams }), React.createElement(Selecttype, { getParams: this.getParams }), React.createElement(Signtype, { getParams: this.getParams })), React.createElement("div", { className: "modal-footer" }, React.createElement("button", { type: "button", className: "btn btn-success", onclick: "{this.doSaveadd}" }, "保存"), React.createElement("button", { type: "button", className: "btn btn-default", "data-dismiss": "modal", onClick: this.closeDialog }, "取消")))));
+	    }
+	});
+
+	module.exports = DialogBox;
 
 /***/ },
 /* 213 */
@@ -20890,7 +20978,7 @@ module.exports =
 
 
 	// module
-	exports.push([module.id, "ul,\nli {\n  marign: 0;\n  padding: 0;\n}\nli {\n  list-style-type: none;\n}\nbody {\n  background: #F8F6F2;\n}\n#centerContent {\n  padding-left: 62px;\n}\n", ""]);
+	exports.push([module.id, "ul,\nli {\n  marign: 0;\n  padding: 0;\n}\nli {\n  list-style-type: none;\n}\nbody {\n  background: #F8F6F2;\n}\n.fix {\n  zoom: 1;\n}\n.fix:after {\n  display: block;\n  content: 'clear';\n  clear: both;\n  line-height: 0;\n  visibility: hidden;\n}\n#centerContent {\n  padding-left: 62px;\n}\n.modal-dialog {\n  width: 675px;\n}\n.modal-dialog textarea {\n  display: block;\n  margin: 0 auto;\n  padding: 10px;\n  width: 590px;\n  height: 110px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n}\n.modal-dialog textarea:focus {\n  outline: none;\n  border: 1px solid #fcd340;\n}\n.modal-dialog .modal-body {\n  padding: 15px 40px 0 40px;\n}\n.modal-dialog .modal-footer {\n  margin: 0 0 20px 28px;\n  border-top: none;\n  text-align: left;\n}\n.modal-dialog .modal-footer .btn-success {\n  padding: 6px 30px;\n}\n.item-wrap .btn-default {\n  margin-top: 5px;\n  padding-top: 8px;\n  padding-bottom: 8px;\n  width: 280px;\n  border: 1px solid #ccc;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  background-color: transparent;\n  background-image: none;\n  text-align: left;\n}\n.item-wrap .item {\n  float: left;\n  width: 280px;\n  margin: 10px 0;\n}\n.item-wrap .item:nth-child(2) {\n  float: right;\n}\n.item-wrap .caret {\n  float: right;\n  margin-top: 8px;\n}\n.item-wrap .sign-add {\n  margin-top: 10px;\n  width: 40px;\n  height: 40px;\n  border-radius: 30px;\n  text-align: center;\n  line-height: 37px;\n  border: 1px solid #ddd;\n  color: #aaa;\n  cursor: pointer;\n}\n.item-wrap .sign-add {\n  width: 40px;\n  height: 40px;\n  border-radius: 30px;\n  text-align: center;\n  line-height: 36px;\n  border: 1px solid #ddd;\n  color: #bbb;\n  font-size: 24px;\n  cursor: pointer;\n}\n.item-wrap .sign-add:hover {\n  color: #da4f4a;\n  border: 1px solid #da4f4a;\n}\n.item-wrap:last-child .item:nth-child(2) {\n  float: left;\n  padding: 38px 0 0 34px;\n  font-size: 16px;\n  color: #666;\n  cursor: pointer;\n}\n.item-wrap:last-child .item:nth-child(2):hover {\n  color: #da4f4a;\n}\n.textarea-tip {\n  color: #ccc;\n  padding-top: 5px;\n}\n", ""]);
 
 	// exports
 

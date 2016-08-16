@@ -6,13 +6,16 @@ if(typeof window !== 'undefined') {
 }
 
 var FastAddList = React.createClass({
+    showAddtaskDialog: function() {
+        PubSub.publish( 'show.addTaskDialog');
+    },
     render: function() {
         return (
             <div className={this.props.showStatus == true? "fastadd-list-box": "fastadd-list-box hide"}>
                 <ul>
                     <li><i className="fa fa-group"></i>团队</li>
                     <li><i className="fa fa-inbox"></i>项目</li>
-                    <li className="line"><i className="fa fa-tasks"></i>任务</li>
+                    <li onClick={this.showAddtaskDialog} className="line"><i className="fa fa-tasks"></i>任务</li>
                     <li><i className="fa fa-calendar-o"></i>日程</li>
                     <li><i className="fa fa-file"></i>文件</li>
                 </ul>
