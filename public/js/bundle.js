@@ -48,12 +48,12 @@
 	var React = __webpack_require__(34);
 	var ReactDOM = __webpack_require__(71);
 	var Leftbar = __webpack_require__(201);
-	var Topbar = __webpack_require__(202);
-	var Main = __webpack_require__(207);
-	var FastAddDialog = __webpack_require__(211);
+	var Topbar = __webpack_require__(206);
+	var Main = __webpack_require__(209);
+	var FastAddDialog = __webpack_require__(213);
 
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(212);
+	    __webpack_require__(214);
 	}
 
 	var componont_layout = function (data) {
@@ -20412,7 +20412,7 @@
 	var ReactDOM = __webpack_require__(71);
 
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(214);
+	    __webpack_require__(202);
 	}
 
 	var FastAddList = React.createClass({ displayName: "FastAddList",
@@ -20442,13 +20442,22 @@
 
 /***/ },
 /* 202 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(34);
 	var ReactDOM = __webpack_require__(71);
 
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(203);
+	    __webpack_require__(207);
 	}
 
 	var TopBar = React.createClass({ displayName: "TopBar",
@@ -20460,16 +20469,14 @@
 	module.exports = TopBar;
 
 /***/ },
-/* 203 */
+/* 207 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */
+/* 208 */,
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM */
@@ -20477,7 +20484,7 @@
 	var ReactDOM = __webpack_require__(71);
 
 	if (typeof window !== 'undefined') {
-	    var Tasks = __webpack_require__(208);
+	    var Tasks = __webpack_require__(210);
 	}
 
 	var Mainlayout = React.createClass({ displayName: "Mainlayout",
@@ -20490,7 +20497,7 @@
 	module.exports = Mainlayout;
 
 /***/ },
-/* 208 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/** @jsx React.DOM */
@@ -20498,7 +20505,7 @@
 	var ReactDOM = __webpack_require__(71);
 
 	if (typeof window !== 'undefined') {
-	    __webpack_require__(209);
+	    __webpack_require__(211);
 	}
 
 	var TaskList = React.createClass({ displayName: "TaskList",
@@ -20616,14 +20623,14 @@
 	module.exports = TaskWrapper;
 
 /***/ },
-/* 209 */
+/* 211 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 210 */,
-/* 211 */
+/* 212 */,
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(34);
@@ -20641,13 +20648,6 @@
 	module.exports = DialogBox;
 
 /***/ },
-/* 212 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 213 */,
 /* 214 */
 /***/ function(module, exports) {
 
