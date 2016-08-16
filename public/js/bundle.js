@@ -20697,7 +20697,7 @@
 	        return React.createElement("div", { className: "item-wrap fix" }, React.createElement("div", { className: "item" }, "分配给：", React.createElement("div", { className: "sign-add" }, React.createElement("span", null, "＋"))), React.createElement("div", { className: "item" }, React.createElement("span", { "data-tasklock": "0", onClick: this.changeLock }, React.createElement("i", { className: icon_class }), "锁定任务")));
 	    }
 	});
-
+	
 	var DialogBox = React.createClass({ displayName: "DialogBox",
 	    getInitialState: function () {
 	        return {
@@ -20734,7 +20734,6 @@
 	});
 
 	module.exports = DialogBox;
-
 /***/ },
 /* 214 */
 /***/ function(module, exports) {
